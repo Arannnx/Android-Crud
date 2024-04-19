@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,11 +34,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView debug = findViewById(R.id.debug);
         EditText txt_uname = findViewById(R.id.txt_uname);
-        EditText txt_pword = findViewById(R.id.txt_psword);
+        EditText txt_pword = findViewById(R.id.txt_pword);
         EditText txt_email = findViewById(R.id.txt_email);
         Button btn_save = findViewById(R.id.btn_save);
+        Button btn_update = findViewById(R.id.btn_update);
+        Button btn_retrieve = findViewById(R.id.btn_to_retrieve);
+        Button btn_delete = findViewById(R.id.btn_delete);
+
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdate();
+            }
+        });
+
+        btn_retrieve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openretrieve();
+            }
+        });
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                opendelete();
+            }
+        });
 
         // add btn_save onclickListener
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -58,30 +82,47 @@ public class MainActivity extends AppCompatActivity {
                         if (response.equals("Success")) {
                             Toast.makeText(MainActivity.this, "Data Added", Toast.LENGTH_SHORT).show();
                         } else {
-                            debug.setText(response);
                             Toast.makeText(MainActivity.this, "Database failed to Add to Database", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
 
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
 
                     }
                 }) {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> paramV = new HashMap<>();
-                       paramV.put("uname", uname);
-                       paramV.put("pword", pword);
-                       paramV.put("email", email);
-                       return paramV;
+                        paramV.put("uname", uname);
+                        paramV.put("pword", pword);
+                        paramV.put("email", email);
+                        return paramV;
                     }
                 };
 
                 queue.add(stringRequest);
             }
         });
+    }
+
+    public void openUpdate() {
+        Intent intent = new Intent(this, update.class);
+        startActivity(intent);
+
+    }
+
+    public void openretrieve() {
+        Intent intent = new Intent(this, retrieve.class);
+        startActivity(intent);
+
+    }
+
+    public void opendelete() {
+        Intent intent = new Intent(this, delete.class);
+        startActivity(intent);
+
     }
 }
