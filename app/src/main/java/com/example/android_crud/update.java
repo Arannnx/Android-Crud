@@ -44,7 +44,7 @@ public class update extends AppCompatActivity {
 
                 // Instantiate the RequestQueue
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.137.153/android_crud/update.php";
+                String url = "http://192.168.19.242/android_crud/update.php";
 
                 // Request a string response from the provided URL
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -80,9 +80,5 @@ public class update extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
-    }
-    public void openUpdate(){
-        Intent intent = new Intent(this, update.class);
-        startActivity(intent);
     }
 }

@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Use MainActivity.this as the context
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.137.153/android_crud/create.php";
+                String url = "http://192.168.19.242/android_crud/create.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override

@@ -46,7 +46,7 @@ public class retrieve extends AppCompatActivity {
                 String email = txt_email.getText().toString();
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.137.153/android_crud/retrieve.php";
+                String url = "http://192.168.19.242/android_crud/retrieve.php";
                 //local ip/folder name from htdocs/php create file
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,

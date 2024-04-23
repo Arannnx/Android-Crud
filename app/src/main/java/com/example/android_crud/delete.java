@@ -34,7 +34,7 @@ public class delete extends AppCompatActivity {
                 String id = txt_id.getText().toString();
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.137.153/android_crud/delete.php";
+                String url = "http://192.168.19.242/android_crud/delete.php";
                 //local ip/folder name from htdocs/php create file
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
